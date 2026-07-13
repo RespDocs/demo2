@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SOAP</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #fff;
+            box-shadow: 0 2px 6px #0003;
+        }
+
+        h1 {
+            flex: 1;
+            text-align: center;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .btn {
+            text-decoration: none;
+            background: #1976d2;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    // ===================================
+    // SOLO MODIFICAR ESTE DATO
+    // ===================================
+    const CONFIG = {
+        patente: "JTYY64"
+    };
+
+
+    // ===================================
+    // VARIABLES AUTOMATICAS
+    // ===================================
+    const BASE_URL = `https://respdocs.github.io/${CONFIG.patente}/`;
+    const PDF = `SOAP-${CONFIG.patente}.pdf`;
+
+</script>
+
+
+<header>
+
+    <a class="btn" id="volver">
+        🏠 Volver
+    </a>
+
+
+    <h1>
+        SOAP "Demo"></span>
+    </h1>
+
+
+    <a class="btn" id="descargar" download>
+        📥 Descargar
+    </a>
+
+</header>
+
+
+<iframe id="visor"></iframe>
+
+
+
+<script>
+
+    // Configuración automática de enlaces
+
+    document.getElementById("volver").href = BASE_URL;
+
+    document.getElementById("descargar").href = PDF;
+
+    document.getElementById("visor").src =
+        PDF + "#toolbar=0&navpanes=0";
+
+
+    // Mostrar patente en pantalla
+
+    document.getElementById("patente").textContent =
+        CONFIG.patente;
+
+
+</script>
+
+
+</body>
+
+</html>
