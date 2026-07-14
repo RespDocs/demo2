@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Consulta MTT HLLD97</title>
+<title>Consulta MTT</title>
 
 <style>
 
@@ -20,26 +20,34 @@ body{
 
 
 header{
+
     padding:12px;
-    background:white;
+    background:#fff;
     box-shadow:0 2px 6px #0003;
+
 }
 
 
 .btn{
+
+    text-decoration:none;
     background:#1976d2;
     color:white;
     padding:10px 14px;
     border-radius:8px;
-    text-decoration:none;
+    font-size:14px;
+
 }
 
 
 iframe{
+
     flex:1;
     width:100%;
     border:0;
+
 }
+
 
 </style>
 
@@ -51,65 +59,78 @@ iframe{
 
 <header>
 
-<a class="btn" href="renastre.html">
+<a class="btn" id="volver">
 🏠 Volver
 </a>
 
 </header>
 
 
-<iframe id="mtt"
-src="https://apps.mtt.cl/consultaweb/default.aspx">
-</iframe>
+
+<iframe id="visor"></iframe>
 
 
 
 <script>
 
-const patente = "HLLD97";
+
+// ==========================
+// OBTENER PATENTE
+// ==========================
+
+const parametros =
+new URLSearchParams(window.location.search);
 
 
-// Intento de automatización
-
-window.onload=function(){
-
-    const iframe =
-    document.getElementById("mtt");
+const patente =
+parametros.get("patente") || "HLLD97";
 
 
-    iframe.onload=function(){
-
-        try{
-
-            let doc =
-            iframe.contentWindow.document;
 
 
-            let campo =
-            doc.querySelector("input");
+// ==========================
+// CONFIGURACIÓN
+// ==========================
 
 
-            if(campo){
+// Cambiar por tu Worker real
 
-                campo.value = patente;
+const WORKER =
+"https://TU-WORKER.workers.dev/";
 
-            }
 
 
-        }catch(e){
 
-            console.log(
-            "El sitio bloquea acceso directo al iframe"
-            );
+// URL consulta
 
-        }
+const consulta =
+WORKER + "?patente=" + patente;
 
-    }
 
-}
+
+// ==========================
+// CARGAR RESULTADO
+// ==========================
+
+
+document.getElementById("visor").src =
+consulta;
+
+
+
+
+// ==========================
+// BOTÓN VOLVER
+// ==========================
+
+
+document.getElementById("volver").href =
+"renastre.html?patente=" + patente;
+
 
 
 </script>
+
 
 
 </body>
