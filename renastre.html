@@ -16,7 +16,6 @@ body{
     height:100vh;
     display:flex;
     flex-direction:column;
-    background:#fff;
 }
 
 
@@ -42,23 +41,24 @@ h1{
 }
 
 
-.btn{
+.acciones{
 
-    text-decoration:none;
-    background:#1976d2;
-    color:white;
-    padding:10px 14px;
-    border-radius:8px;
-    font-size:14px;
+    display:flex;
+    gap:8px;
+    align-items:center;
 
 }
 
 
-.mtt{
+.btn{
 
-    text-align:center;
-    padding:10px;
-    background:#f5f5f5;
+    text-decoration:none;
+    background:#1976d2;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:8px;
+    font-size:14px;
+    white-space:nowrap;
 
 }
 
@@ -68,6 +68,25 @@ iframe{
     flex:1;
     width:100%;
     border:0;
+
+}
+
+
+@media(max-width:600px){
+
+    .btn{
+
+        padding:8px 10px;
+        font-size:12px;
+
+    }
+
+
+    h1{
+
+        font-size:16px;
+
+    }
 
 }
 
@@ -84,16 +103,16 @@ iframe{
 
 const CONFIG = {
 
-    patente:"HLLD97"
+    patente:"ABCD12"
 
 };
 
 
-const BASE_URL = 
+const BASE_URL =
 `https://respdocs.github.io/${CONFIG.patente}/`;
 
 
-const PDF = 
+const PDF =
 `RENASTRE-${CONFIG.patente}.pdf`;
 
 
@@ -104,11 +123,27 @@ const PDF =
 <header>
 
 
+<div class="acciones">
+
+
 <a class="btn" id="volver">
 
 🏠 Volver
 
 </a>
+
+
+
+<a class="btn"
+href="https://apps.mtt.cl/consultaweb/default.aspx"
+target="_blank">
+
+🔎 Consulta MTT
+
+</a>
+
+
+</div>
 
 
 
@@ -128,20 +163,6 @@ RENASTRE
 
 
 </header>
-
-
-
-<div class="mtt">
-
-<a class="btn"
-href="https://apps.mtt.cl/consultaweb/default.aspx"
-target="_blank">
-
-🔎 Consulta MTT
-
-</a>
-
-</div>
 
 
 
