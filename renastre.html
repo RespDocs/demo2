@@ -57,7 +57,6 @@ h1{
     padding:10px 14px;
     border-radius:8px;
     font-size:14px;
-    cursor:pointer;
     white-space:nowrap;
 
 }
@@ -75,15 +74,20 @@ iframe{
 @media(max-width:600px){
 
 .btn{
-    font-size:12px;
+
     padding:8px 10px;
+    font-size:12px;
+
 }
 
 h1{
+
     font-size:16px;
+
 }
 
 }
+
 
 </style>
 
@@ -93,25 +97,20 @@ h1{
 <body>
 
 
+
 <script>
 
-const CONFIG = {
+// ================================
+// CONFIGURACIÓN
+// ================================
 
-    patente:"HLLD97"
+const PDF = "RENASTRE-ABCD12.pdf";
 
-};
-
-
-const BASE_URL =
-`https://respdocs.github.io/${CONFIG.patente}/`;
-
-
-const PDF =
-`RENASTRE-${CONFIG.patente}.pdf`;
-
+const VOLVER =
+"https://respdocs.github.io/ABCD12/";
 
 const MTT =
-"https://apps.mtt.cl/consultaweb/default.aspx";
+"mtt.html";
 
 
 </script>
@@ -123,31 +122,42 @@ const MTT =
 
 <div class="acciones">
 
+
 <a class="btn" id="volver">
+
 🏠 Volver
+
 </a>
 
 
-<a class="btn" onclick="abrirMTT()">
+<a class="btn" id="mtt">
+
 🔎 Consulta MTT
+
 </a>
+
 
 </div>
 
 
 
-<h1 id="titulo">
+<h1>
+
 RENASTRE
+
 </h1>
 
 
 
-<a class="btn" id="accion">
+<a class="btn" id="descargar" download>
+
 📥 Descargar
+
 </a>
 
 
 </header>
+
 
 
 
@@ -159,70 +169,21 @@ RENASTRE
 <script>
 
 
-const visor =
-document.getElementById("visor");
+document.getElementById("volver").href = VOLVER;
 
 
-const titulo =
-document.getElementById("titulo");
+document.getElementById("mtt").href = MTT;
 
 
-const accion =
-document.getElementById("accion");
+document.getElementById("descargar").href = PDF;
 
 
-
-document.getElementById("volver").href =
-BASE_URL;
-
-
-
-// Estado inicial PDF
-
-function abrirPDF(){
-
-    visor.src =
-    PDF + "#toolbar=0&navpanes=0";
-
-    titulo.textContent =
-    "RENASTRE";
-
-    accion.textContent =
-    "📥 Descargar";
-
-    accion.href =
-    PDF;
-
-}
-
-
-
-// Abrir MTT dentro del visor
-
-function abrirMTT(){
-
-    visor.src = MTT;
-
-    titulo.textContent =
-    "RENASTRE - Consulta MTT";
-
-    accion.textContent =
-    "📄 Ver RENASTRE";
-
-    accion.removeAttribute("download");
-
-    accion.onclick = abrirPDF;
-
-}
-
-
-
-// cargar documento inicial
-
-abrirPDF();
+document.getElementById("visor").src =
+PDF + "#toolbar=0&navpanes=0";
 
 
 </script>
+
 
 
 </body>
