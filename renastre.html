@@ -12,7 +12,7 @@
 
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     height:100vh;
     display:flex;
     flex-direction:column;
@@ -45,7 +45,6 @@ h1{
 
     display:flex;
     gap:8px;
-    align-items:center;
 
 }
 
@@ -54,7 +53,7 @@ h1{
 
     text-decoration:none;
     background:#1976d2;
-    color:#fff;
+    color:white;
     padding:10px 14px;
     border-radius:8px;
     font-size:14px;
@@ -75,22 +74,16 @@ iframe{
 
 @media(max-width:600px){
 
-    .btn{
-
-        padding:8px 10px;
-        font-size:12px;
-
-    }
-
-
-    h1{
-
-        font-size:16px;
-
-    }
-
+.btn{
+    font-size:12px;
+    padding:8px 10px;
 }
 
+h1{
+    font-size:16px;
+}
+
+}
 
 </style>
 
@@ -100,12 +93,11 @@ iframe{
 <body>
 
 
-
 <script>
 
 const CONFIG = {
 
-    patente:"ABCD12"
+    patente:"HLLD97"
 
 };
 
@@ -126,57 +118,40 @@ const MTT =
 
 
 
-
 <header>
 
 
 <div class="acciones">
 
-
 <a class="btn" id="volver">
-
 🏠 Volver
-
 </a>
-
 
 
 <a class="btn" onclick="abrirMTT()">
-
 🔎 Consulta MTT
-
 </a>
-
 
 </div>
 
 
 
-
-<h1>
-
+<h1 id="titulo">
 RENASTRE
-
 </h1>
 
 
 
-
-<a class="btn" id="descargar" download>
-
+<a class="btn" id="accion">
 📥 Descargar
-
 </a>
-
 
 
 </header>
 
 
 
-
 <iframe id="visor"></iframe>
-
 
 
 
@@ -188,39 +163,66 @@ const visor =
 document.getElementById("visor");
 
 
+const titulo =
+document.getElementById("titulo");
+
+
+const accion =
+document.getElementById("accion");
+
+
 
 document.getElementById("volver").href =
 BASE_URL;
 
 
 
-document.getElementById("descargar").href =
-PDF;
+// Estado inicial PDF
 
+function abrirPDF(){
 
+    visor.src =
+    PDF + "#toolbar=0&navpanes=0";
 
-// Cargar PDF al iniciar
+    titulo.textContent =
+    "RENASTRE";
 
-visor.src =
-PDF + "#toolbar=0&navpanes=0";
+    accion.textContent =
+    "📥 Descargar";
 
-
-
-
-// Abrir consulta MTT dentro del visor
-
-function abrirMTT(){
-
-    visor.src = MTT;
+    accion.href =
+    PDF;
 
 }
 
 
 
+// Abrir MTT dentro del visor
+
+function abrirMTT(){
+
+    visor.src = MTT;
+
+    titulo.textContent =
+    "RENASTRE - Consulta MTT";
+
+    accion.textContent =
+    "📄 Ver RENASTRE";
+
+    accion.removeAttribute("download");
+
+    accion.onclick = abrirPDF;
+
+}
+
+
+
+// cargar documento inicial
+
+abrirPDF();
+
 
 </script>
-
-
 
 
 </body>
