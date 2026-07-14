@@ -58,6 +58,7 @@ h1{
     border-radius:8px;
     font-size:14px;
     white-space:nowrap;
+    cursor:pointer;
 
 }
 
@@ -71,6 +72,7 @@ iframe{
 }
 
 
+
 @media(max-width:600px){
 
 .btn{
@@ -79,6 +81,7 @@ iframe{
     font-size:12px;
 
 }
+
 
 h1{
 
@@ -97,20 +100,24 @@ h1{
 <body>
 
 
-
 <script>
 
-// ================================
-// CONFIGURACIÓN
-// ================================
+// ==========================
+// CONFIGURACIÓN DEL VEHÍCULO
+// ==========================
 
-const PDF = "RENASTRE-ABCD12.pdf";
+const PATENTE = "ABCD12";
+
+const PDF = 
+`RENASTRE-${PATENTE}.pdf`;
+
 
 const VOLVER =
-"https://respdocs.github.io/ABCD12/";
+`https://respdocs.github.io/${PATENTE}/`;
+
 
 const MTT =
-"mtt.html";
+`mtt.html?patente=${PATENTE}`;
 
 
 </script>
@@ -124,16 +131,13 @@ const MTT =
 
 
 <a class="btn" id="volver">
-
 🏠 Volver
-
 </a>
 
 
-<a class="btn" id="mtt">
 
+<a class="btn" id="consulta">
 🔎 Consulta MTT
-
 </a>
 
 
@@ -142,17 +146,13 @@ const MTT =
 
 
 <h1>
-
 RENASTRE
-
 </h1>
 
 
 
 <a class="btn" id="descargar" download>
-
 📥 Descargar
-
 </a>
 
 
@@ -166,16 +166,20 @@ RENASTRE
 
 
 
+
 <script>
 
 
-document.getElementById("volver").href = VOLVER;
+document.getElementById("volver").href =
+VOLVER;
 
 
-document.getElementById("mtt").href = MTT;
+document.getElementById("consulta").href =
+MTT;
 
 
-document.getElementById("descargar").href = PDF;
+document.getElementById("descargar").href =
+PDF;
 
 
 document.getElementById("visor").src =
